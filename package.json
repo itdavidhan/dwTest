@@ -19,6 +19,7 @@
   "devDependencies": {
     "bootstrap": "^3.3.7",
     "bootstrap-datetimepicker": "0.0.7",
+    "d3": "^3.5.17",
     "jquery": "^1.12.4"
   }
 }

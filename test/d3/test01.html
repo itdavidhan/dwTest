@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        #box {
+            width: 100%;
+            height: 50%;
+            border: 1px solid #ddd;
+        }
+        .bar {
+            display: inline-block;
+            margin: 0 5px;
+            width: 20px;
+            background-color: #00a0ea;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+    <script type="text/javascript" src="../../js/d3.js"></script>
+    <script type="text/javascript" src="../../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var data = [1, 3, 6, 3, 2, 9, 7, 10, 4, 2];
+            var selection = d3.select('#box') // 1 声明dom对象集
+              .selectAll('div.bar')       // 1 声明dom对象集
+              // data()方法执行时对数据集和DOM元素集进行了匹配计算， 
+              // 直接返回的结果就是两个集合的共有部分。由于DOM元素集是空的，
+              // 所以结果一定也没有任何DOM元素
+              .data(data)             // 2 声明数据集
+              // enter() : 获得数据集中比DOM元素集中多出来的数据
+              // exit() ：获得DOM元素集中比数据集中多出来的数据
+              .enter()                // 3 获得结果集
+              .append('div')          // 4 实施DOM操作
+              .attr('style', function(d, i) {
+                   return 'height:'+ d*10 + 'px';
+              })
+              .text(function(d) {
+                  return d;
+              })
+              .classed('bar', true)
+              ;
+            console.log(selection);
+        });
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        // （1）作为普通函数调用,this即window全局对象
+        (function() {
+            function foo() {
+                this.a = 1;
+                console.log('1,this=>', this);
+            }
+            foo();
+        })();
+
+        // （2）作为一个对象的方法调用，this指这个对象
+        (function() {
+            var obj = {
+                a: 2,
+                foo: function() {
+                    document.write(this.a);
+                    console.log('2,this=>', this);
+                }
+            }
+            obj.foo();
+        })();
+
+        // （3）作为构造函数被调用，this为构造函数的实例
+        (function() {
+            function Foo() {
+                this.a = 3;
+            }
+
+            var f = new Foo();
+            f.a = 333;
+            f.b = function() {
+                alert(this.a);
+                console.log('3,this=>', this);
+            };
+            f.b();
+        })();
+
+        // （4）使用call apply 调用，this指向call/apply的第一个参数，为空的话，为window
+        (function() {
+            var a = 4;
+            var obj = {
+                a: 444,
+                foo: function() {
+                    document.write(this.a);
+                    console.log('4,this=>', this);
+                }
+            }
+
+            var obj2 = {
+                a: 'hahaha'
+            }
+
+            obj.foo.call(); // 1
+            obj.foo.call(obj); // 444
+            obj.foo.call(obj2); // 'hahaha'
+        })();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

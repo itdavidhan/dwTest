@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        (function() {
+            function setName(obj){ 
+            　　　　obj.name = "ABC"; 
+                    console.log(1, obj); // 此时obj保留与全局对象的关联
+            　　　　obj = new Object(); // 重新赋值，此时obj为局部对象
+            　　　　obj.name = "BCD"; 
+                    console.log(2, obj);
+            　　} 
+            　　var person = new Object(); 
+            　　setName(person); 
+            　　alert(person.name); // ABC 
+        })();
+
+        (function() {
+            var arr = [1, 2, 3];
+
+            function foo(arr) {
+                arr = [1, 2, 3, 4, 5]; // 重新赋值
+            }
+
+            foo(arr);
+
+            console.log('arr', arr); // [1, 2, 3]
+        })();
+
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

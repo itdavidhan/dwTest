@@ -13,6 +13,8 @@
             $btn.off('click').on('click', function() {
                 // 清空容器
                 $container.empty().show();
+                // 设置input
+                localStore.setInput($btn);
                 // init - 生成省级列表
                 localStore._renderProvincial(mainData, $container);
                 // 点击省级按钮
@@ -24,6 +26,7 @@
     });
 
     var localStore = {
+        $input: '',
         mainData: [],
         // 通过ajax获取本地json数据
         _ajaxData: function() {
@@ -41,6 +44,10 @@
                 }
             });
             return data;
+        },
+        // 设置$input
+        setInput: function(btn) {
+            this.$input = btn;
         },
         // 获取全部数据
         _getMainData: function() {
@@ -257,12 +264,28 @@
                 // 渲染镇级
                 _this._renderTown(pCode, cCode, dCode, $container, name);
                 _this._showTown($container);
+                _this._clickTown($container);
                 // 隐藏省级
                 _this._hideProvincial($container);
                 // 隐藏市级
                 _this._hideCity($container);
                 // 隐藏区级
                 _this._hideDistrict($container);
+            });
+        },
+        _clickTown: function($container) {
+            var $tCont = $container.find('.dh-town');
+            var $t = $tCont.find('li>a._t');
+            var _this = this;
+
+            $t.off('click').on('click', function() {
+                var tCode = $(this).data('code');
+                var name = $(this).text();
+
+                _this.$input.val(name);
+                _this.$input.attr('data-code', tCode);
+                _this.$input.attr('data-name', name);
+                _this._hideContainer($container);
             });
         },
         // 点击面包屑导航
@@ -307,6 +330,10 @@
                         break;
                 }
             });
+        },
+        // 隐藏弹框
+        _hideContainer: function($container) {
+            $container.empty().hide();
         },
         // 隐藏省级
         _hideProvincial: function($container) {

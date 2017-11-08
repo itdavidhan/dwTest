@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        // 1K = 1000;
+        // 1M = 1000000;
+        // 1G = 1000000000;
+
+        // Data unit conversion 数据单位转换
+        var duc = {
+            // num [必填]要转换的数值
+            // fix 保留小数的位数
+            ordinary: function(_num, fix) {
+                var _n = 0;
+                var _num = parseFloat(_num);
+                var isPositive = (_num >= 0) ? true : false;
+                var num = Math.abs(_num);
+                var fix = fix || 0;
+
+                if(typeof num !== 'number') return;
+
+                if(num < 1000) {
+                    _n = num;
+                } else if(num >= 1000 && num < 1000000) {
+                    _n = (num / 1000).toFixed(fix) + 'K';
+                } else if(num >= 1000000 && num < 1000000000) {
+                    _n = (num / 1000000).toFixed(fix) + 'M';
+                } else if (num >= 1000000000) {
+                    _n = (num / 1000000000).toFixed(fix) + 'G';
+                }
+                return isPositive ? _n : '-'+_n;
+            },
+            // *assign: 指定unit
+            // num [必填]要转换的数值
+            // fix 保留小数的位数
+            // unit 所要转换的单位，如K M G
+            assign: function(num, fix, unit) {
+                var _n = 0;
+                var num = parseFloat(num);
+                var fix = fix || 0;
+                var unit = unit ? unit.toUpperCase() : 'K';
+                if(typeof num !== 'number') return;
+
+                switch(unit) {
+                    case 'K':
+                        _n = (num / 1000).toFixed(fix) + 'K';
+                        break;
+                    case 'M':
+                        _n = (num / 1000000).toFixed(fix) + 'M';
+                        break;
+                    case 'G':
+                        _n = (num / 1000000000).toFixed(fix) + 'G';
+                        break;
+                    default:
+                        _n = num;
+                        break;
+                }
+                return _n;
+            }
+        };
+
+
+        // test
+        var num = -123456789;
+
+        var _num = duc.ordinary(num, 2);
+        document.write('_num=  ', _num + '<br>');
+
+        var _num2 = duc.assign(num, 2, 'm');
+        document.write('_num2=  ', _num2 + '<br>');
+
+        var _num3 = duc.assign(num);
+        document.write('_num3=  ', _num3);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
