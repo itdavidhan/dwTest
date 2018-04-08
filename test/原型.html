@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            function fn() {
+                // console.log('hi');
+            }
+
+            var p = fn.prototype;
+            console.log(p); // 原型是他自己本身
+
+            var n = new fn();
+            var np = n.prototype;
+            console.log(np); // 实例没有原型
+        };
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

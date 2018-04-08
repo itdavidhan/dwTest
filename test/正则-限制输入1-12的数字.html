@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        window.onload = function() {
+
+            var input = document.getElementById('input');
+            var reg = /^(1[0-2]|[1-9])$/is;
+
+            input.onkeyup = function() {
+                var val = input.value;
+                console.log(reg.test(val));
+                if(!reg.test(val)) input.value = '';
+            };
+             
+        };
+        
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="input">
+</body>
+</html>

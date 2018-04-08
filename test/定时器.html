@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            var timer = null;
+
+            clearTimeout(timer);
+            aaa();
+            timer = setInterval(aaa, 1000);
+
+            function aaa() {
+                console.log(1);
+            }
+        };
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

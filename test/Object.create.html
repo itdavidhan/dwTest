@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        function Car() {
+            this.color = 'blue';
+        }
+
+        Car.prototype = {
+            getInfo: function() {
+                return 'A '+this.color+' car~';
+            }
+        };
+
+        console.log('Car.prototype', Car.prototype);
+        var car = Object.create(Car.prototype);
+        console.log('car', car);
+        car.color = 'red';
+        console.log('car.getInfo()', car.getInfo());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

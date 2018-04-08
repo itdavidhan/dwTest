@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        // 题目：有一种猴子摘了若干桃子N，然后它第一天吃了一半，觉得还不过瘾，所以又吃了1个，
+        // 然后第二天又吃了前一天剩下的一半的+1个，第三天又是前一天剩下的一半+1个……直到第10天，只剩下1个桃子。
+        // 所以1.请写一个方法计算出这10天的总共吃掉多少个桃子X。2.那么如果是66666天呢？
+
+        var a = eat(1, 10);
+        console.log('a', a);
+        // s 剩下的个数，count天数
+        function eat(s, count) {
+            var all = 0;
+            var n = (s+1)*2; // 吃之前的总数
+            fn(n, count);
+            return all;
+
+            function fn(n, count) {
+                if(count == 1) {
+                    all = n;
+                    return;
+                } else {
+                    count--;
+                    n = (n+1)*2;
+                    fn(n, count);
+                }
+                console.log('第'+count+'天，还剩'+n+'个');
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

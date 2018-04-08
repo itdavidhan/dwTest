@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        var obj = {'name': 'davidhan'};
+
+        function setName(obj) {
+            obj.name = 'jim green';
+            obj = new Object();
+            obj.name = 'aaa';
+        }
+
+        setName(obj);
+
+        console.log('obj', obj.name); // 'jim green'
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

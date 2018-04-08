@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        var arr = ['tom', 'jim', 'john', 'tom', 'mary', 'mary'];
+        var newArr = arr.filter(function(item, index, self) {
+            console.log('self.indexOf(item), item', self.indexOf(item), item);
+            return self.indexOf(item) === index;
+        });
+        console.log('newArr', newArr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

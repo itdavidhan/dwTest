@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        var time = 1546271999*1000;
+        var now = (new Date()).getTime();
+        var day = 24*60*60*1000;
+
+        // 剩余秒数
+        var surplus = time - now;
+
+        // 剩余天数
+        var d = Math.floor( surplus / day );
+        
+        console.log('d', d, surplus / day);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
